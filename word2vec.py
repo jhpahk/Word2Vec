@@ -1,8 +1,15 @@
 import torch
 import torch.nn as nn
 
+from torchtext.vocab import build_vocab_from_iterator
+
 EMBED_DIM = 300
 EMBED_MAX_NORM = 1
+
+MIN_FREQ = 30
+
+
+def build_vocab()
 
 
 class Word2Vec(nn.Module):
@@ -37,5 +44,5 @@ class Word2Vec(nn.Module):
             return self.forward_SkipGram(words)
         else:
             return self.forward_CBOW(words)
-        
 
+        
