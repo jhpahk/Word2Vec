@@ -17,13 +17,19 @@ def showGraph(bargraph):
 
 
 # 모델 불러오기
-model_filename = 'word2vec.model'
-model = word2vec.Word2Vec.load(model_filename)
+model_filename = 'word2vec_kor_20220922_031620.model'
+model = word2vec.Word2Vec.load(("saves/" + model_filename))
+print(f"{model_filename} 불러오기 완료\n")
 
 
 # 유사도 구하기
-# 국민이라는 단어와 유사도가 높은 단어 10개를 리스트로 반환
-bargraph = model.most_similar(positive=['국민'], topn=10)
-showGraph(bargraph)
+# 입력받은 단어와 유사도가 높은 단어 10개를 리스트로 반환
+while True:
+        target = input("단어를 입력하세요: ")
+        if not target:
+                break
+        
+        bargraph = model.wv.most_similar(positive=[target], topn=10)
+        showGraph(bargraph)
 
-plt.show()
+        plt.show()

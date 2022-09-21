@@ -13,6 +13,7 @@ data_dir = 'C:/Users/USER/Desktop/Quiz_Project/kor_Word2Vec/Word2Vec/data'
 file_list = os.listdir(data_dir)
 
 print("학습 데이터 목록 구성 완료")
+print(f"-> {file_list}")
 end_time = time.time()
 print(f"소요 시간: {int((end_time - start_time) // 60)}min {(end_time - start_time) % 60:.2f}sec\n")
 
@@ -36,7 +37,7 @@ start_time = time.time()
 print("학습 시작")
 
 model = Word2Vec(sentences=data,
-                 sg=1, vector_size=300, window=5, hs=0, negative=10, min_count=4, workers=4)
+                 sg=1, vector_size=300, window=5, hs=0, negative=10, min_count=4, workers=8)
 
 print("학습 완료")
 end_time = time.time()
@@ -45,7 +46,7 @@ print(f"소요 시간: {int((end_time - start_time) // 60)}min {(end_time - star
 
 # 결과 저장
 curtime = time.strftime("%Y%m%d_%H%M%S")
-result_filename = "word2vec_kor_{curtime}.model"
+result_filename = f"word2vec_kor_{curtime}.model"
 model.save(result_filename)
 
 
